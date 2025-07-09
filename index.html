@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemetaan SPBU Kota Kendari</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="map"></div>
+  
+  <!-- Header -->
+  <div class="header">
+    <h1>Sistem Informasi Geografis SPBU Kota Kendari</h1>
+  </div>
+  
+  <!-- Sidebar Toggle Button -->
+  <div class="sidebar-toggle" id="sidebar-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>Daftar SPBU Kota Kendari</h2>
+    
+    <!-- Search -->
+    <div class="search-container">
+      <input type="text" class="search-input" id="search-input" placeholder="Cari SPBU...">
+    </div>
+    
+    <!-- Layer Control -->
+    <div class="layer-control">
+      <h3>Filter Jarak</h3>
+      <div class="layer-item">
+        <input type="checkbox" id="dekat-layer" class="layer-checkbox" checked>
+        <label for="dekat-layer">Dekat (< 2 km)</label>
+      </div>
+      <div class="layer-item">
+        <input type="checkbox" id="sedang-layer" class="layer-checkbox" checked>
+        <label for="sedang-layer">Sedang (2-5 km)</label>
+      </div>
+      <div class="layer-item">
+        <input type="checkbox" id="jauh-layer" class="layer-checkbox" checked>
+        <label for="jauh-layer">Jauh (> 5 km)</label>
+      </div>
+    </div>
+    
+    <!-- SPBU List -->
+    <ul class="spbu-list" id="spbu-list">
+      <!-- Will be populated by JavaScript -->
+    </ul>
+  </div>
+  
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <button class="control-btn" id="locate-btn">
+      <i class="fas fa-location-arrow"></i> Lokasi Saya
+    </button>
+    <button class="control-btn" id="nearest-btn">
+      <i class="fas fa-gas-pump"></i> SPBU Terdekat
+    </button>
+    <button class="control-btn" id="export-btn">
+      <i class="fas fa-download"></i> Export Data
+    </button>
+  </div>
+  
+  <!-- Legend -->
+  <div class="legend">
+    <h3>Keterangan Jarak:</h3>
+    <div class="legend-item">
+      <span class="legend-color" style="background-color: #2ecc71;"></span>
+      <span>Dekat (< 2 km)</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background-color: #f1c40f;"></span>
+      <span>Sedang (2-5 km)</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-color" style="background-color: #e74c3c;"></span>
+      <span>Jauh (> 5 km)</span>
+    </div>
+  </div>
+  
+  <!-- Info Panel -->
+  <div class="info-panel" id="info-panel">
+    <span class="close-btn" id="close-info">&times;</span>
+    <h2 id="info-title">Detail SPBU</h2>
+    <table>
+      <tr>
+        <td>Nama</td>
+        <td id="info-name">-</td>
+      </tr>
+      <tr>
+        <td>Alamat</td>
+        <td id="info-address">-</td>
+      </tr>
+      <tr>
+        <td>Jenis</td>
+        <td id="info-type">-</td>
+      </tr>
+      <tr>
+        <td>Jam Operasional</td>
+        <td id="info-hours">-</td>
+      </tr>
+      <tr>
+        <td>Fasilitas</td>
+        <td id="info-facilities">-</td>
+      </tr>
+      <tr>
+        <td>Koordinat</td>
+        <td id="info-coordinates">-</td>
+      </tr>
+      <tr>
+        <td>Jarak</td>
+        <td id="info-distance">-</td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
